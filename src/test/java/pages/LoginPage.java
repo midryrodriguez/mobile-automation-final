@@ -29,4 +29,22 @@ public class LoginPage extends BasePage {
     public boolean isLoginButtonDisplayed() {
         return isDisplayed(loginButton);
     }
+
+    public void enterEmail(String email) {
+        type(emailInput, email);
+    }
+
+    public void enterPassword(String password) {
+        type(passwordInput, password);
+    }
+
+    public void tapLoginButton() {
+        click(loginButton);
+    }
+
+    public void login(String email, String password) {
+        enterEmail(email);
+        enterPassword(password);
+        tapLoginButton();
+    }
 }
