@@ -17,5 +17,6 @@ public class HomeNavigationTest extends BaseTest {
 
         Assert.assertTrue(homePage.isHomeTitleDisplayed(), "Home title should be visible");
         Assert.assertTrue(homePage.isLogoDisplayed(), "Home logo should be visible");
+        Assert.assertTrue(homePage.isHomeDescriptionTextDisplayed(), "Home description text should be visible");
     }
 }

@@ -4,6 +4,9 @@
         <classes>
             <class name="tests.LaunchAppTest"/>
             <class name="tests.HomeNavigationTest"/>
+            <class name="tests.LoginNavigationTest"/>
+            <class name="tests.SwipeNavigationTest"/>
+            <class name="tests.SwipeCardsTest"/>
         </classes>
     </test>
 </suite>

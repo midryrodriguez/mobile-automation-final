@@ -2,6 +2,7 @@ package pages;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 public class BasePage {
@@ -30,6 +31,10 @@ public class BasePage {
     }
 
     protected boolean isDisplayed(By locator) {
-        return find(locator).isDisplayed();
+        try {
+            return find(locator).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
