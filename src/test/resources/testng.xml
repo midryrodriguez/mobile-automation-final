@@ -8,6 +8,9 @@
             <class name="tests.SwipeNavigationTest"/>
             <class name="tests.SwipeCardsTest"/>
             <class name="tests.UserDataGeneratorTest"/>
+            <class name="tests.SignUpTest"/>
+            <class name="tests.LoginTest"/>
+            <class name="tests.BottomNavigationFullTest"/>
         </classes>
     </test>
 </suite>

@@ -37,18 +37,22 @@ public class SwipeCardsTest extends BaseTest {
 
         Assert.assertTrue(swipePage.isCardContainerDisplayed(), "Card container should be visible");
 
-        for (int i = 0; i < 4; i++) {
+        int maxSwipeAttempts = 6;
+        int swipeAttempts = 0;
+
+        while (!swipePage.isFifthCardDisplayed() && swipeAttempts < maxSwipeAttempts) {
             gestureUtils.swipeLeft(swipePage.getCardContainer());
+            swipeAttempts++;
         }
 
         Assert.assertTrue(swipePage.isFifthCardDisplayed(), "Last card should be visible");
 
         int maxScrolls = 6;
-        int attempts = 0;
+        int scrollAttempts = 0;
 
-        while (!swipePage.isHiddenTextDisplayed() && attempts < maxScrolls) {
+        while (!swipePage.isHiddenTextDisplayed() && scrollAttempts < maxScrolls) {
             gestureUtils.swipeUpOnScreen();
-            attempts++;
+            scrollAttempts++;
         }
 
         Assert.assertTrue(swipePage.isHiddenTextDisplayed(), "\"You found me!!!\" text should be visible");

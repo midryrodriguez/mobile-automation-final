@@ -24,4 +24,8 @@ public class HomePage extends BasePage {
     public boolean isHomeDescriptionTextDisplayed() {
         return isDisplayed(homeDescriptionText);
     }
+
+    public boolean isTitleDisplayed() {
+        return isHomeTitleDisplayed();
+    }
 }

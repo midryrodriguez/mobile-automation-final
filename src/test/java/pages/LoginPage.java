@@ -12,10 +12,17 @@ public class LoginPage extends BasePage {
     private final By loginButton = By.xpath("//android.view.ViewGroup[@content-desc='button-LOGIN']");
 
     private final By signUpTab = By.xpath("//android.widget.TextView[@text='Sign up']");
-    private final By signUpEmailInput = By.xpath("(//android.widget.EditText[@content-desc='input-email'])[2]");
-    private final By signUpPasswordInput = By.xpath("(//android.widget.EditText[@content-desc='input-password'])[2]");
+    private final By loginTab = By.xpath("//android.widget.TextView[@text='Login']");
     private final By confirmPasswordInput = By.xpath("//android.widget.EditText[@content-desc='input-repeat-password']");
     private final By signUpButton = By.xpath("//android.view.ViewGroup[@content-desc='button-SIGN UP']");
+
+    private final By signUpSuccessTitle = By.xpath("//android.widget.TextView[@text='Signed Up!']");
+    private final By signUpSuccessMessage = By.xpath("//android.widget.TextView[@text='You successfully signed up!']");
+
+    private final By loginSuccessTitle = By.xpath("//android.widget.TextView[@text='Success']");
+    private final By loginSuccessMessage = By.xpath("//android.widget.TextView[@text='You are logged in!']");
+
+    private final By successOkButton = By.xpath("//android.widget.Button[@text='OK']");
 
     public LoginPage(AndroidDriver driver) {
         super(driver);
@@ -49,7 +56,12 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
 
+    public void tapLoginTab() {
+        click(loginTab);
+    }
+
     public void login(String email, String password) {
+        tapLoginTab();
         enterEmail(email);
         enterPassword(password);
         tapLoginButton();
@@ -60,11 +72,11 @@ public class LoginPage extends BasePage {
     }
 
     public void enterSignUpEmail(String email) {
-        type(signUpEmailInput, email);
+        type(emailInput, email);
     }
 
     public void enterSignUpPassword(String password) {
-        type(signUpPasswordInput, password);
+        type(passwordInput, password);
     }
 
     public void enterConfirmPassword(String password) {
@@ -81,5 +93,25 @@ public class LoginPage extends BasePage {
         enterSignUpPassword(password);
         enterConfirmPassword(password);
         tapSignUpButton();
+    }
+
+    public boolean isSignUpSuccessTitleDisplayed() {
+        return isDisplayed(signUpSuccessTitle);
+    }
+
+    public boolean isSignUpSuccessMessageDisplayed() {
+        return isDisplayed(signUpSuccessMessage);
+    }
+
+    public boolean isLoginSuccessTitleDisplayed() {
+        return isDisplayed(loginSuccessTitle);
+    }
+
+    public boolean isLoginSuccessMessageDisplayed() {
+        return isDisplayed(loginSuccessMessage);
+    }
+
+    public void tapSuccessOkButton() {
+        click(successOkButton);
     }
 }

@@ -9,6 +9,7 @@ public class NavigationBar extends BasePage {
     private final By homeTab = AppiumBy.accessibilityId("Home");
     private final By webviewTab = AppiumBy.accessibilityId("Webview");
     private final By loginTab = AppiumBy.accessibilityId("Login");
+    private final By formsTab = AppiumBy.accessibilityId("Forms");
     private final By swipeTab = AppiumBy.accessibilityId("Swipe");
     private final By dragTab = AppiumBy.accessibilityId("Drag");
 
@@ -28,11 +29,27 @@ public class NavigationBar extends BasePage {
         click(loginTab);
     }
 
+    public void goToForms() {
+        click(formsTab);
+    }
+
     public void goToSwipe() {
         click(swipeTab);
     }
 
     public void goToDrag() {
         click(dragTab);
+    }
+
+    public boolean isWebviewTabDisplayed() {
+        return isDisplayed(webviewTab);
+    }
+
+    public boolean isFormsTabDisplayed() {
+        return isDisplayed(formsTab);
+    }
+
+    public boolean isDragTabDisplayed() {
+        return isDisplayed(dragTab);
     }
 }
