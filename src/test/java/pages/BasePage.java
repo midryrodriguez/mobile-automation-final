@@ -4,17 +4,23 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BasePage {
 
     protected AndroidDriver driver;
+    protected WebDriverWait wait;
 
     public BasePage(AndroidDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     protected WebElement find(By locator) {
-        return driver.findElement(locator);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     protected void click(By locator) {
@@ -22,8 +28,9 @@ public class BasePage {
     }
 
     protected void type(By locator, String text) {
-        find(locator).clear();
-        find(locator).sendKeys(text);
+        WebElement element = find(locator);
+        element.clear();
+        element.sendKeys(text);
     }
 
     protected String getText(By locator) {
@@ -32,8 +39,9 @@ public class BasePage {
 
     protected boolean isDisplayed(By locator) {
         try {
-            return find(locator).isDisplayed();
-        } catch (NoSuchElementException e) {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
             return false;
         }
     }

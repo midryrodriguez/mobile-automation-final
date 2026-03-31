@@ -29,15 +29,14 @@ public class GestureUtils {
         performSwipe(startX, y, endX, y, 500);
     }
 
-    public void swipeUp(WebElement element) {
-        Point location = element.getLocation();
-        Dimension size = element.getSize();
+    public void swipeUpOnScreen() {
+        Dimension size = driver.manage().window().getSize();
 
-        int centerX = location.getX() + (size.getWidth() / 2);
-        int startY = (int) (location.getY() + size.getHeight() * 0.8);
-        int endY = (int) (location.getY() + size.getHeight() * 0.2);
+        int centerX = size.getWidth() / 2;
+        int startY = (int) (size.getHeight() * 0.80);
+        int endY = (int) (size.getHeight() * 0.30);
 
-        performSwipe(centerX, startY, centerX, endY, 600);
+        performSwipe(centerX, startY, centerX, endY, 700);
     }
 
     private void performSwipe(int startX, int startY, int endX, int endY, int durationMs) {
